@@ -10,6 +10,7 @@
 - [x] Add authentication (w/ clerk) / Добавить аутентификацию 
 - [x] Add image upload / Добавить загрузку изображения
 - [x] "taint" (server-only)
+- [ ] Use Next/Image
 - [ ] Error management (w/ Sentry)
 - [ ] Routing/image page (parallel route)
 - [ ] Delete button (w/ Server Actions)

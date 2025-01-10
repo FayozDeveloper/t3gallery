@@ -22,7 +22,7 @@ export const ourFileRouter = {
                 url: file.url,
                 userId: metadata.userId
             })
-            // console.log('File url', file.url)
+
             return { uploadedBy: metadata.userId };
         }),
 } satisfies FileRouter;

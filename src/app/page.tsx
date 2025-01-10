@@ -1,28 +1,33 @@
-import Link from "next/link";
+import {SignedIn, SignedOut} from "@clerk/nextjs";
+import {db} from "~/server/db";
+export const dynamic = 'force-dynamic'
 
-export default function HomePage() {
-    const mockUrls = [
-        "https://images.pexels.com/photos/33045/lion-wild-africa-african.jpg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/443446/pexels-photo-443446.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/50594/sea-bay-waterfront-beach-50594.jpeg?auto=compress&cs=tinysrgb&w=600",
-        "https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=600"
-    ]
+export async function Images() {
+    const images = await db.query.images.findMany({
+        orderBy: (model, {desc}) => desc(model.id)
+    })
 
-    const mockImages = mockUrls.map((url, index) => ({
-        id: index + 1,
-        url
-    }))
-
-  return (
-    <main className="">
+    return (
         <div className='flex flex-wrap gap-4'>
-            {mockImages.map((img) => (
-                <div key={img.id} className='w-48'>
+            {images.map((img) => (
+                <div key={img.id} className='w-48 flex flex-col'>
                     <img src={img.url} alt="img not found"/>
+                    <div>{img.id}</div>
                 </div>
             ))}
         </div>
+    )
+}
+
+export default function HomePage() {
+  return (
+    <main className="">
+        <SignedOut>
+            <div className='w-full h-full text-2xl text-center'>Please Sign in above</div>
+        </SignedOut>
+        <SignedIn>
+            <Images/>
+        </SignedIn>
     </main>
   );
 }

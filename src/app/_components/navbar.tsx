@@ -9,7 +9,7 @@ export function Navbar() {
     return(
         <nav className='w-full flex items-center justify-between p-4 border-b text-xl font-semibold'>
             <Link href='/'>Gallery</Link>
-            <div className='flex flex-row'>
+            <div className='flex flex-row items-center gap-4'>
                 <SignedOut>
                     <SignInButton/>
                 </SignedOut>

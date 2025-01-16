@@ -7,7 +7,7 @@ import "./src/env.js";
 /** @type {import("next").NextConfig} */
 const coreConfig = {
   images: {
-    remotePatterns: [{ hostname: "w1a29w6i1v.ufs.sh" }],
+      domains: ['utfs.io', 'w1a29w6i1v.ufs.sh']
   },
   typescript: {
     ignoreBuildErrors: true,

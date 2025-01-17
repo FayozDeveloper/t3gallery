@@ -8,6 +8,7 @@ import {NextSSRPlugin} from "@uploadthing/react/next-ssr-plugin";
 import {extractRouterConfig} from "uploadthing/server";
 import {ourFileRouter} from "~/app/api/uploadthing/core";
 import {Toaster} from "~/components/ui/sonner";
+import {CSPostHogProvider} from "~/app/_analytics/provider";
 
 export const metadata: Metadata = {
   title: "Next Gallery",
@@ -25,20 +26,22 @@ export default function RootLayout({
 }>) {
   return (
       <ClerkProvider>
-        <html lang="en" className={`${GeistSans.variable}`}>
-            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
-              <body>
-                <div className='flex flex-col h-screen'>
-                    <Navbar/>
-                    <main className='flex flex-1 justify-center overflow-y-scroll'>
-                        {children}
-                    </main>
-                </div>
-                {modal}
-                <div id='modal-root'/>
-                <Toaster/>
-              </body>
-        </html>
+          <CSPostHogProvider>
+            <html lang="en" className={`${GeistSans.variable}`}>
+                <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
+                  <body>
+                    <div className='flex flex-col h-screen'>
+                        <Navbar/>
+                        <main className='flex flex-1 justify-center overflow-y-scroll'>
+                            {children}
+                        </main>
+                    </div>
+                    {modal}
+                    <div id='modal-root'/>
+                    <Toaster/>
+                  </body>
+            </html>
+          </CSPostHogProvider>
       </ClerkProvider>
   );
 }

@@ -27,9 +27,9 @@ export default function RootLayout({
         <html lang="en" className={`${GeistSans.variable}`}>
             <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)}/>
               <body>
-                <div className='grid h-screen  grid-rows-[auto, 1fr]'>
+                <div className='flex flex-col h-screen'>
                     <Navbar/>
-                    <main className='overflow-y-scroll'>
+                    <main className='flex flex-1 justify-center overflow-y-scroll'>
                         {children}
                     </main>
                 </div>

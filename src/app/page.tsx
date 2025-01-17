@@ -17,6 +17,7 @@ export async function Images() {
                             style={{objectFit: 'contain'}}
                             width={200}
                             height={200}
+                            priority
                             alt="img not found"
                         />
                     </Link>

@@ -37,7 +37,7 @@ const config = withSentryConfig(
       // Upload a larger set of source maps for prettier stack traces (increases build time)
       widenClientFileUpload: true,
 
-      // Automatically annotate React components to show their full name in breadcrumbs and session replay
+      // Automatically annotate React common to show their full name in breadcrumbs and session replay
       reactComponentAnnotation: {
         enabled: true,
       },

@@ -1,4 +1,4 @@
-import FullImagePageView from "~/components/full-image-page";
+import FullImagePageView from "~/common/full-image-page";
 
 export default async function PhotoPage({params: {id: photoId}}:{
     params: {id: string};
@@ -7,7 +7,7 @@ export default async function PhotoPage({params: {id: photoId}}:{
     if (Number.isNaN(idAsNumber)) throw new Error('Invalid photo id')
 
     return (
-        <div className='h-full'>
+        <div className='w-full h-full'>
             <FullImagePageView id={idAsNumber}/>
         </div>
     )

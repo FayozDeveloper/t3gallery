@@ -1,4 +1,4 @@
-import {deleteImage, getImage} from "~/server/db/queries";
+import {deleteImage, getImage} from "~/server/queries";
 import {clerkClient} from "@clerk/nextjs/server";
 import {Button} from "~/components/ui/button";
 

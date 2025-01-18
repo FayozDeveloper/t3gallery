@@ -15,6 +15,5 @@
 - [x] Routing/image page (parallel route)
 - [x] custom upload button
 - [x] ShadcnUI (specifically toast)
-- [ ] Delete button (w/ Server Actions)
+- [x] Delete button (w/ Server Actions)
 - [x] Analytics (posthog)
-- [ ] Ratelimiting (upstash)

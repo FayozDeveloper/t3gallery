@@ -62,7 +62,11 @@ export const CustomUploadButton  = () => {
                     <span className='text-lg'>Uploading...</span>
                 </div>
             )
-    },
+        },
+        onUploadError(error){
+            posthog.capture('upload_error', {error})
+            toast.error('upload failer')
+        },
         onClientUploadComplete(){
             toast('Upload complete!')
             router.refresh();

@@ -2,7 +2,7 @@ import {SignedIn, SignedOut} from "@clerk/nextjs";
 import {getMyImages} from "~/server/db/queries";
 import Image from "next/image";
 import Link from "next/link";
-export const dynamic = 'force-dynamic'
+export const dynamic = "force-dynamic";
 
 export async function Images() {
     const images = await getMyImages();

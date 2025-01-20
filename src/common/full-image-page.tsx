@@ -1,9 +1,10 @@
 import {deleteImage, getImage} from "~/server/queries";
 import {clerkClient} from "@clerk/nextjs/server";
 import {Button} from "~/components/ui/button";
+import Image from "next/image";
 
-export default async function FullImagePageView(props: { id: number}) {
-    const idAsNumber = Number(props.id);
+export default async function FullImagePageView(props: { photoId: string}) {
+    const idAsNumber = Number(props.photoId);
     if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
 
     const image = await getImage(idAsNumber);
@@ -14,7 +15,16 @@ export default async function FullImagePageView(props: { id: number}) {
     return (
         <div className='flex w-full h-full min-w-0'>
             <div className='flex flex-1 flex-shrink justify-center items-center p-6'>
-                <img src={image.url} className='flex-shrink object-contain w-full h-full' alt='img not found'/>
+                <Image
+                    src={image.url}
+                    style={{objectFit: 'contain'}}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    priority
+                    className='flex-shrink object-contain w-full h-full'
+                    alt='img not found'
+                />
             </div>
             <div className='w-48 flex flex-col flex-shrink-0 border-l'>
                 <div className='text-lg border-b text-center p-2'>{image.name}</div>
